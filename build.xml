@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TheGoldenQuestion" default="all" basedir=".">
+	<description>
+           The Golden Question Project.(Java)   
+        </description>
+
+	<property name="src.dir" location="./src/" />
+	<property name="bin.dir" location="./bin/" />
+
+	<path id="classpath.path">
+		<pathelement path="${bin.dir}"/>
+	</path>
+	<target name="clean">
+		<delete verbose="true">
+			<fileset dir="${bin.dir}"/>
+		</delete>
+	</target>
+
+	<target name="compile">
+		<javac destdir="${bin.dir}" classpathref="classpath.path">
+			<src path="${src.dir}"/>
+		</javac>
+	</target>
+
+
+        <target name="all" depends="clean,compile">
+        </target>
+</project>
