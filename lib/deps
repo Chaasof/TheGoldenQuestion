@@ -1,0 +1,6 @@
+#
+#Make sure these libraries are in this directory.
+#
+Mysql-Connector
+JUnit4
+Mockito
