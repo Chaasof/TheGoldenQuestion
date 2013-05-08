@@ -1,73 +1,44 @@
 package com.golden.entities;
 
 public class User {
-    String id;
-    String question;
-    String reponseV;
-    String reponseF1;
-    String reponseF2;
-    String reponseF3;
-    public User(String id,String question,String reponseV,String reponseF1,String reponseF2,String reponseF3){
-        this.id=id;
-        this.question=question;
-        this.reponseV=reponseV;
-        this.reponseF1=reponseF1;
-        this.reponseF2=reponseF2;
-        this.reponseF3=reponseF3;
-    }
-    
-    public String getId(){
-        return id;
-    }
-    public String getQuestion(){
-        return question;
-    }
+	private int id;
+	private String pseudo;
+	private int bestScore;
 
-    public String getReponseV() {
-		return reponseV;
+	public int getId() {
+		return id;
 	}
 
-
-	public void setReponseV(String reponseV) {
-		this.reponseV = reponseV;
-	}
-    
-    public String getReponseF1() {
-		return reponseF1;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-
-	public void setReponseF1(String reponseF1) {
-		this.reponseF1 = reponseF1;
+	public String getPseudo() {
+		return pseudo;
 	}
 
-
-	public String getReponseF2() {
-		return reponseF2;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 
-
-	public void setReponseF2(String reponseF2) {
-		this.reponseF2 = reponseF2;
+	public int getBestScore() {
+		return bestScore;
 	}
 
-
-	public String getReponseF3() {
-		return reponseF3;
+	public void setBestScore(int bestScore) {
+		this.bestScore = bestScore;
 	}
 
-
-	public void setReponseF3(String reponseF3) {
-		this.reponseF3 = reponseF3;
+	public User(int id, String pseudo, int bestScore) {
+		super();
+		this.id = id;
+		this.pseudo = pseudo;
+		this.bestScore = bestScore;
 	}
 
-    public String toString() {
-        return "Id Question : " + id +
-        		",\n Question : " + question +
-        		",\n Proposition vrai : " + reponseV +
-        		",\n Proposition fausse : " + reponseF1 +
-        		",\n Proposition fausse : " + reponseF2 +
-        		",\n Proposition fausse : " + reponseF3;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		User user = (User) obj;
+		return (user.getId() == this.id);
+	}
 }
-
