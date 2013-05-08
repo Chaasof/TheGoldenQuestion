@@ -9,12 +9,16 @@ public class DatabaseConfiguration {
 
 	public DatabaseConfiguration(String filePath) {
 		try {
-		configuration = new Properties();
-		InputStream input = DatabaseConfiguration.class.getResourceAsStream(filePath);
-		configuration.load(input);
+			configuration = new Properties();
+			InputStream input = DatabaseConfiguration.class
+			        .getResourceAsStream(filePath);
+			configuration.load(input);
 		}
-		catch (IOException e){
+		catch (IOException e) {
 			throw new RuntimeException(e);
+		}
+		catch (NullPointerException e) {
+			throw new RuntimeException("Ressource Not Found");
 		}
 	}
 

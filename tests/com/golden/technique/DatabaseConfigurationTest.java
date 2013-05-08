@@ -38,10 +38,16 @@ public class DatabaseConfigurationTest {
 	public void getDatabaseUrl_ShouldReturnUrlInTestFile() {
 		assertEquals("http://localhost", configuration.getUrl());
 	}
-
+	
+	@Test
+	public void constructor_ShouldBuildConfigurationObjectWithOutOfClassLoaderRootLocatedFile() {
+       DatabaseConfiguration conf = new DatabaseConfiguration("/com/golden/config/conf.properties");
+	   assertNotNull(conf);
+	}
+	
 	@Test(expected=RuntimeException.class)
 	public void constructor_ShouldThrowRuntimeExceptionWhenFileNotFound() {
        DatabaseConfiguration conf = new DatabaseConfiguration("t5armija.pro");
 	}
-
+	
 }

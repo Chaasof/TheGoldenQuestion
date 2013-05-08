@@ -1,34 +1,40 @@
 package com.golden.technique;
 
 import java.sql.*;
-/**
- *
- * @author Mohamed
- */
+
 public class DBConnection {
-    private String user="root";
-    private String pass="" ;
-    private String url="jdbc:mysql://localhost/thegoldenquestion" ;
-    private String driver= "com.mysql.jdbc.Driver";
-    private Connection cn;
-    private static DBConnection instanceCn;
-     
-    private DBConnection() 
-            throws ClassNotFoundException, SQLException{
-        Class.forName(driver);
-        cn=DriverManager.getConnection(url, user, pass);
-            }
-        public static DBConnection getInstance() 
-                throws ClassNotFoundException, SQLException{
-        if(instanceCn==null)
-            instanceCn=new DBConnection();
-        return instanceCn;
-    }
-    
-    
-    
-      public Connection getCn() {
-        return cn;
-    }    
-    
+	private String username;
+	private String password;
+	private String url;
+	private String driver = "com.mysql.jdbc.Driver";
+	private Connection connection;
+	private static DBConnection soleInstance = null;
+
+	private DBConnection() {
+		DatabaseConfiguration conf = new DatabaseConfiguration("/com/golden/config/conf.properties");
+		username = conf.getUserName();
+		password = conf.getPassword();
+		url = conf.getUrl() + conf.getDatabaseName();
+		
+		try {
+			Class.forName(driver);
+			connection = DriverManager.getConnection(url, username, password);
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public static DBConnection getInstance() {
+		if (soleInstance == null) {
+			soleInstance = new DBConnection();
+		}
+		return soleInstance;
+	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
 }
