@@ -7,11 +7,12 @@
 	<property name="src.dir" location="./src/" />
 	<property name="bin.dir" location="./bin/" />
 	<property name="tests.dir" location="./tests/" />
-	<property name="lib.dir" location="../lib"/>
+	<property name="lib.dir" location="./lib/"/>
 	<path id="classpath.path">
 		<pathelement path="${bin.dir}"/>
 	        <pathelement location="${lib.dir}/junit4.jar"/>
 		<pathelement location="${lib.dir}/mockito-all-1.9.5.jar"/>
+                <pathelement location="${lib.dir}/mysql-connector-java-5.1.23-bin.jar"/>
         </path>
 	<target name="clean">
 		<delete verbose="true">
