@@ -52,8 +52,8 @@
 		</javac>
 	</target>
         
-        <target name="test" depends="compile">
-		<junit printsummary="yes" fork="true">
+        <target name="test" depends="compile" >
+		<junit printsummary="yes" fork="true" haltonfailure="true" >
 			<formatter type="xml"/>
 			<classpath refid="classpath.path"/>
 			<batchtest todir="./report">
@@ -64,6 +64,7 @@
 		</junit>
 	</target>
 	
-        <target name="all" depends="db:create,clean,compile,test">
-	</target>
+        <target name="all" depends="db:create,clean,copyProps,compile,test">
+	     <echo message="TheGoldenQuestion is Built!"/>
+        </target>
 </project>
