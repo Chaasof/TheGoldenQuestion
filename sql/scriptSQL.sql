@@ -1,4 +1,4 @@
-DROP DATABASE TheGoldenQuestion;
+DROP DATABASE IF EXISTS TheGoldenQuestion;
 CREATE DATABASE TheGoldenQuestion;
 
 CREATE TABLE TheGoldenQuestion.question(
