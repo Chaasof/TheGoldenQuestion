@@ -4,28 +4,54 @@
            The Golden Question Project.(Java)   
         </description>
 
-	<property name="src.dir" location="./src/" />
+        <property name="src.dir" location="./src/" />
 	<property name="bin.dir" location="./bin/" />
 	<property name="tests.dir" location="./tests/" />
 	<property name="lib.dir" location="./lib/"/>
-	<path id="classpath.path">
+	<property name="sql.dir" location="./sql/"/>
+	
+        <path id="classpath.path">
 		<pathelement path="${bin.dir}"/>
-	        <pathelement location="${lib.dir}/junit4.jar"/>
-		<pathelement location="${lib.dir}/mockito-all-1.9.5.jar"/>
+		<pathelement path="${src.dir}"/>
+                <pathelement location="${lib.dir}/junit4.jar"/>
+                <pathelement location="${lib.dir}/mockito-all-1.9.5.jar"/>
                 <pathelement location="${lib.dir}/mysql-connector-java-5.1.23-bin.jar"/>
         </path>
-	<target name="clean">
+	
+        <property resource="/com/golden/config/conf.properties" classpathref="classpath.path"/>
+        <target name="clean">
 		<delete verbose="true">
-			<fileset dir="${bin.dir}"/>
-		</delete>
+                    <fileset dir="${bin.dir}"/>
+                </delete>
 	</target>
-
-	<target name="compile">
+        
+        <target name="db:create" description="Create the database definition">
+            <sql
+                driver="com.mysql.jdbc.Driver"
+                url="${url}"
+                userid="${username}"
+                password="${password}"
+                classpathref="classpath.path"
+                src="${sql.dir}/scriptSQL.sql"
+                delimiter=";"/>
+        </target>
+        <target name="copyProps">
+            <copy todir="${bin.dir}">
+                <fileset dir="${src.dir}">
+                     <include name="**/*.properties" />
+                </fileset>
+                <fileset dir="${tests.dir}">
+                     <include name="**/*.properties" />
+                </fileset>
+            </copy>  
+        </target>
+        <target name="compile" depends="copyProps">
 		<javac destdir="${bin.dir}" classpathref="classpath.path">
 			<src path="${src.dir}"/>
 			<src path="${tests.dir}"/>
 		</javac>
 	</target>
+        
         <target name="test" depends="compile">
 		<junit printsummary="yes" fork="true">
 			<formatter type="xml"/>
@@ -37,6 +63,7 @@
 			</batchtest>
 		</junit>
 	</target>
-	<target name="all" depends="clean,compile,test">
+	
+        <target name="all" depends="db:create,clean,compile,test">
 	</target>
 </project>
