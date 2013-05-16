@@ -1,4 +1,4 @@
-package com.golden.utilities;
+package com.golden.core;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.golden.core.NoMoreDistinctQuestionException;
+import com.golden.core.QuestionGenerator;
 import com.golden.dao.QuestionDAO;
 import com.golden.entities.Question;
 import static org.mockito.Mockito.*;

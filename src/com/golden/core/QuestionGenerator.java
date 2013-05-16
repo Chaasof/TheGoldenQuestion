@@ -1,4 +1,4 @@
-package com.golden.utilities;
+package com.golden.core;
 
 import java.util.ArrayList;
 import java.util.List;
