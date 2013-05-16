@@ -21,143 +21,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.xml.crypto.Data;
 
-
-
-
-package com.esprit.is.gui;
-
-import java.awt.FlowLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.AbstractTableModel;
-import com.golden.entities.Question;
-import com.golden.entities.User;
-
-public class Welcome extends JPanel {
-
-	private class MyTableModel extends AbstractTableModel {
-		private List<User> allUser;
-
-		public MyTableModel() {
-			super();
-			try {
-				allUser = new ArrayList<User>();
-					allUser.add(new User(1, "sofien", 12));
-					allUser.add(new User(2, "med", 12));
-					allUser.add(new User(3, "chedy", 15));
-			}
-			catch (UnavailableServiceException e) {
-				JOptionPane.showConfirmDialog(MainPanel.this,
-				        "Service Unavailable could npot retrieve Cars!");
-			}
-		}
-
-		@Override
-		public int getColumnCount() {
-
-			return 2;
-		}
-
-		@Override
-		public int getRowCount() {
-
-			return allUser.size();
-		}
-
-		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) {
-			User car = allUser.get(rowIndex);
-			switch (columnIndex) {
-				case 0:
-					return getPseudo();
-				case 1:
-					return User.getBestScore();
-				default:
-					throw new ArrayIndexOutOfBoundsException(
-					        "Out Of Bound Column Index");
-			}
-
-		}
-
-		@Override
-		public String getColumnName(int columnIndex) {
-			switch (columnIndex) {
-				case 0:
-					return "Pseudo";
-				case 1:
-					return "Meilleur Score";
-				default:
-					throw new ArrayIndexOutOfBoundsException(
-					        "Out Of Bound Column Index");
-			}
-		}
-
-	}
-
-	private class ButtonEventHandler extends MouseAdapter {
-		@Override
-		public void mouseReleased(MouseEvent event) {
-			parent.notifyAddCar();
-		}
-	}
-
-	private class RmButtonEventHandler extends MouseAdapter {
-
-		@Override
-		public void mouseReleased(MouseEvent event) {
-				String regNumber = (String) table.getModel().getValueAt(
-				        table.getSelectedRow(), 0);
-				carManager.removeCar(regNumber);
-				refresh();
-				rmButton.setEnabled(false);
-		}
-	}
-    private class TableEventHandler implements ListSelectionListener{
-
-		@Override
-        public void valueChanged(ListSelectionEvent event) {
-	       rmButton.setEnabled(true);   
-		}
-    	
-    }
-	private JTable table = new JTable(new MyTableModel());
-	private JButton addButton = new JButton();
-	private JButton rmButton = new JButton();
-	private MainWindow parent;
-
-	public MainPanel(MainWindow window) {
-		super(new FlowLayout());
-		parent = window;
-		table.getSelectionModel().addListSelectionListener(new TableEventHandler());
-		addButton.setText("Add Car");
-		rmButton.setText("Remove Car");
-		addButton.addMouseListener(new ButtonEventHandler());
-		rmButton.addMouseListener(new RmButtonEventHandler());
-		rmButton.setEnabled(false);
-		add(new JScrollPane(table));
-		add(addButton);
-		add(rmButton);
-		}
-
-	public void refresh() {
-		table.setModel(new MyTableModel());
-	}
-
-}
-
-
-
-
-public class Welcome{
+public class Welcome extends JFrame{
 	private JFrame fenetre;
 	private JPanel plateau;
 	private JPanel score;
@@ -199,7 +63,9 @@ public class Welcome{
 		//plateau.setLayout(new GridLayout(10, 10));
 		fenetre.add(plateau, BorderLayout.CENTER);
 	}
-
+    public static void main(String[] args) {
+        new Welcome().setVisible(true);
+    }
 
 	/*public static void main(String[] args) {
 

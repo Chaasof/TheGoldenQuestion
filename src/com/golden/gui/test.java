@@ -39,6 +39,7 @@ public class test extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Demo Drawing");
         setLocationRelativeTo(null);  // Center window.
+		setResizable(false);
         pack();
     }
 
@@ -52,9 +53,10 @@ public class test extends JFrame {
 
 
     //========================================================== main
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         JFrame window = new test();
         window.setVisible(true);
+        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
     }
 }
 
