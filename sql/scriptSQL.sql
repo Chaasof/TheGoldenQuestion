@@ -15,9 +15,12 @@ CREATE TABLE question(
 
 CREATE TABLE joueur(
     id INT(2) PRIMARY KEY auto_increment,
-    pseudo VARCHAR(20),
+    pseudo VARCHAR(20) UNIQUE,
     meilleur_score INT(5)
 );
 
 INSERT INTO question VALUES (1, 'Quel est la capital de la France?', 'Paris', 'Tunis', 'Bordeaux', 'Marseille');
 INSERT INTO question VALUES (2, 'Quelle est le moteur de recherche le plus utilisé dans le monde?', 'Google', 'Yahoo', 'DuckDuckGo', 'Lawij');
+
+INSERT INTO joueur VALUES (1, 'hammiya', 0);
+INSERT INTO joueur VALUES (2, 'soussou', 0);
