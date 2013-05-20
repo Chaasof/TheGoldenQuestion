@@ -64,7 +64,7 @@
 		</junit>
 	</target>
 	
-        <target name="all" depends="db:create,clean,copyProps,compile,test">
+        <target name="all" depends="clean,db:create,copyProps,compile,test">
 	     <echo message="TheGoldenQuestion is Built!"/>
         </target>
 </project>

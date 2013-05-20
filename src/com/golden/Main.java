@@ -1,20 +1,19 @@
 package com.golden;
 
-import javax.swing.UnsupportedLookAndFeelException;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
 
-import com.golden.gui.Welcome;
+import com.golden.gui.*;
 
 public class Main {
 
-	/**
-	 * @param args
-	 * @throws UnsupportedLookAndFeelException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws ClassNotFoundException 
-	 */
 	public static void main(String[] args) {
-	        new Welcome().setVisible(true);
+	       // new Welcome().setVisible(true);
+		fenetre fen=new fenetre();
+		fen.setVisible(true);
 	   
 	}
 

@@ -47,19 +47,19 @@ public class UserDAO {
 
 	public void insert(User user) {
 		try {
-              PreparedStatement statement = base.prepareStatement("INSERT INTO joueur VALUES (?, ?, ?)");
-              statement.setInt(1, user.getId());
-              statement.setString(2, user.getPseudo());
-              statement.setInt(3, user.getBestScore());
-              statement.execute();
+			PreparedStatement statement = base
+			        .prepareStatement("INSERT INTO joueur(pseudo, meilleur_score) VALUES (?, ?)");
+			statement.setString(1, user.getPseudo());
+			statement.setInt(2, user.getBestScore());
+			statement.execute();
 		}
 		catch (SQLException e) {
-             if (e.getSQLState().equals("23000")){
-            	 throw new DuplicatedUserException(e);
-             }
-             else {
-            	 throw new RuntimeException(e);
-             }
+			if (e.getSQLState().equals("23000")) {
+				throw new DuplicatedUserException(e);
+			}
+			else {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 }

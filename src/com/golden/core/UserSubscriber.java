@@ -11,6 +11,6 @@ public class UserSubscriber {
 	}
 
 	public void subscribe(String pseudo) {
-		dataAccess.insert(new User(1, pseudo , 0));
+		dataAccess.insert(new User(0, pseudo , 0));
 	}
 }
