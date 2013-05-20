@@ -35,17 +35,23 @@
                 src="${sql.dir}/scriptSQL.sql"
                 delimiter=";"/>
         </target>
-        <target name="copyProps">
+        <target name="copyResources">
             <copy todir="${bin.dir}">
                 <fileset dir="${src.dir}">
                      <include name="**/*.properties" />
+                     <include name="**/*.jpg" />
+                     <include name="**/*.JPG" />
+                     <include name="**/*.png" />
+                     <include name="**/*.jpeg" />
+                     <include name="**/*.pgm" />
+                     <include name="**/*.pmm" />
                 </fileset>
                 <fileset dir="${tests.dir}">
                      <include name="**/*.properties" />
                 </fileset>
             </copy>  
         </target>
-        <target name="compile" depends="copyProps">
+        <target name="compile" depends="copyResources">
 		<javac destdir="${bin.dir}" classpathref="classpath.path">
 			<src path="${src.dir}"/>
 			<src path="${tests.dir}"/>
@@ -64,7 +70,7 @@
 		</junit>
 	</target>
 	
-        <target name="all" depends="clean,db:create,copyProps,compile,test">
+        <target name="all" depends="clean,db:create,copyResources,compile,test">
 	     <echo message="TheGoldenQuestion is Built!"/>
         </target>
 </project>
