@@ -11,7 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class fenetre extends JFrame implements ActionListener{
+public class MainWindow extends JFrame implements ActionListener{
 
         String but;
         private JMenuBar barre_menu;
@@ -24,7 +24,7 @@ public class fenetre extends JFrame implements ActionListener{
         Container c;
         JPanel panel, panel2, panel3;
 
-	public fenetre()
+	public MainWindow()
 
                  {
 
@@ -37,7 +37,7 @@ public class fenetre extends JFrame implements ActionListener{
                  c.setLayout(null);
                  c.setBackground(new Color(1,147,221));
  
-                 String arg = "/com/golden/img/qpc.png";
+                 String arg = "/com/golden/img/finalLogo.png";
                  panel = new JPanel(); 
                  panel.setBounds(0,0,630,375);
                  panel.setBackground(Color.DARK_GRAY); 
@@ -124,7 +124,7 @@ public void actionPerformed(ActionEvent ae)
     if(ae.getSource()==Jouer){
     	
     	char[] input = passwordField.getPassword();
-    	authentification authentif = new authentification(loginText.getText(),input);
+    	Authentication authentif = new Authentication(loginText.getText(),input);
     	String resultat = authentif.ValidationAuthentification();
     	
     	if(resultat.equals("Nom utilisateur erroné")){
@@ -152,28 +152,28 @@ public void actionPerformed(ActionEvent ae)
             label3.setBounds(135,0,300,25);
             panel3.add(label3);
             
-            jouerBouton = new JButton("", new ImageIcon("jouer.png"));
+            jouerBouton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/jouer.png")));
             panel3.add(jouerBouton);
             jouerBouton.setBounds(150,430,225,85);
             jouerBouton.setEnabled (true);
             jouerBouton.addActionListener(this);
             jouerBouton.setBackground(new Color(1,147,221));
             
-            Av1 = new JButton("", new ImageIcon("avatar1.png"));
+            Av1 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/avatar1.png")));
             panel3.add(Av1);
             Av1.setBounds(10,150,118,156);
             Av1.setEnabled (true);
             Av1.addActionListener(this);
             Av1.setBackground(new Color(1,147,221));
             
-            Av2 = new JButton("", new ImageIcon("avatar2.png"));
+            Av2 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/avatar2.png")));
             panel3.add(Av2);
             Av2.setBounds(170,150,118,156);
             Av2.setEnabled (true);
             Av2.addActionListener(this);
             Av2.setBackground(new Color(1,147,221));
             
-            Av3 = new JButton("", new ImageIcon("avatar3.png"));
+            Av3 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/avatar3.png")));
             panel3.add(Av3);
             Av3.setBounds(330,150,118,156);
             Av3.setEnabled (true);
@@ -193,7 +193,7 @@ public void actionPerformed(ActionEvent ae)
 
     if(ae.getSource()==Inscription){
 
-        inscription i = new inscription();
+        Subscribtion i = new Subscribtion();
     }
 
     if(ae.getSource()== jouerBouton){

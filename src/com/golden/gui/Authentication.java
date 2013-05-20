@@ -1,10 +1,10 @@
 package com.golden.gui;
-public class authentification {
+public class Authentication {
 
 	String login;
 	char[] motDePass;
 	
-	authentification(String login, char[] motDePass){
+	Authentication(String login, char[] motDePass){
 		this.login = login;
 		this.motDePass = motDePass;
 	}
