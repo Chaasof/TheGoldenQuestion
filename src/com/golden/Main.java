@@ -1,14 +1,21 @@
 package com.golden;
 
-import java.sql.SQLException;
+import javax.swing.UnsupportedLookAndFeelException;
 
-import com.golden.dao.UserDAO;
+import com.golden.gui.Welcome;
 
 public class Main {
 
-	public static void main(String[] args) throws ClassNotFoundException,
-	        SQLException {
-		System.out.println("app logic here");
+	/**
+	 * @param args
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
+	 */
+	public static void main(String[] args) {
+	        new Welcome().setVisible(true);
+	   
 	}
 
 }
