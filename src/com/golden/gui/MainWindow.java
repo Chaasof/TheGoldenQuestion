@@ -15,7 +15,7 @@ public class MainWindow extends JFrame implements ActionListener{
 
         String but;
         private JMenuBar barre_menu;
-        private JButton Jouer, Inscription,Quitter,jouerBouton,questionButton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
+        private JButton Jouer, Inscription,Quitter,scoreButton,jouerBouton,questionButton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
         private JTextField loginText;
         private JPasswordField passwordField ;
         JFrame frame = new JFrame("application");
@@ -80,7 +80,7 @@ public class MainWindow extends JFrame implements ActionListener{
                  mdp.setForeground(Color.white);
                  mdp.setBounds(40,70,140,25);
                  panel2.add(mdp);
-                 
+                  
                  
                  passwordField = new JPasswordField(10);
                  passwordField.setBounds(160,70,150,25);
@@ -149,7 +149,7 @@ public void actionPerformed(ActionEvent ae)
     		this.remove(panel2);
     		this.repaint();
     		
-    		panel3 = new JPanel(); 
+            panel3 = new JPanel(); 
             panel3.setLayout(null);
             panel3.setBounds(50,20,700,700);
             panel3.setBackground(new Color(1,147,221)); 
@@ -174,13 +174,15 @@ public void actionPerformed(ActionEvent ae)
             Av1.setEnabled (true);
             Av1.addActionListener(this);
             Av1.setBackground(new Color(1,147,221));
-            
+            Av1.getAction();
+                    
             Av2 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/avatar2.png")));
             panel3.add(Av2);
             Av2.setBounds(170,150,118,156);
             Av2.setEnabled (true);
             Av2.addActionListener(this);
             Av2.setBackground(new Color(1,147,221));
+            Av2.getAction();
             
             Av3 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/avatar3.png")));
             panel3.add(Av3);
@@ -188,6 +190,7 @@ public void actionPerformed(ActionEvent ae)
             Av3.setEnabled (true);
             Av3.addActionListener(this);
             Av3.setBackground(new Color(1,147,221));
+            Av3.getAction();
             
             JLabel label4 = new JLabel(); 
             label4.setText("Choisir votre avatar");
@@ -197,7 +200,7 @@ public void actionPerformed(ActionEvent ae)
             panel3.add(label4);
             
             this.add(panel3);
-    	}
+    	}       
     }
 
     if(ae.getSource()==Inscription){
@@ -208,15 +211,23 @@ public void actionPerformed(ActionEvent ae)
     if(ae.getSource()== jouerBouton){
     	this.remove(panel3);
 		this.repaint();
-	
-		JPanel panel4 = new JPanel(); 
-        panel4.setLayout(null);
-        panel4.setBounds(10,100,610,400);
-        panel4.setBackground(new Color(1,147,221));
-        
+            
+            JPanel panel4 = new JPanel(); 
+            panel4.setLayout(null);
+            panel4.setBounds(10,50,610,400);
+            panel4.setBackground(new Color(1,147,221));
+
+            scoreButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/score.png")));
+            panel4.add(scoreButton);
+            scoreButton.setBounds(30,0,60,60);
+            scoreButton.setEnabled (true);
+            scoreButton.setBorderPainted(false);
+            scoreButton.addActionListener(this);
+            scoreButton.setBackground(new Color(1,147,221));
+            
             propositionButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
             panel4.add(propositionButton);
-            propositionButton.setBounds(30,80,250,58);
+            propositionButton.setBounds(30,130,250,58);
             propositionButton.setEnabled (true);
             propositionButton.setBorderPainted(false);
             propositionButton.addActionListener(this);
@@ -224,7 +235,7 @@ public void actionPerformed(ActionEvent ae)
             
             propositionButton1 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
             panel4.add(propositionButton1);
-            propositionButton1.setBounds(30,145,250,58);
+            propositionButton1.setBounds(30,195,250,58);
             propositionButton1.setEnabled (true);
             propositionButton1.setBorderPainted(false);
             propositionButton1.addActionListener(this);
@@ -232,7 +243,7 @@ public void actionPerformed(ActionEvent ae)
             
             propositionButton2 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
             panel4.add(propositionButton2);
-            propositionButton2.setBounds(30,210,250,58);
+            propositionButton2.setBounds(30,260,250,58);
             propositionButton2.setEnabled (true);
             propositionButton2.setBorderPainted(false);
             propositionButton2.addActionListener(this);
@@ -240,7 +251,7 @@ public void actionPerformed(ActionEvent ae)
             
             propositionButton3 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
             panel4.add(propositionButton3);
-            propositionButton3.setBounds(30,275,250,58);
+            propositionButton3.setBounds(30,325,250,58);
             propositionButton3.setEnabled (true);
             propositionButton3.setBorderPainted(false);
             propositionButton3.addActionListener(this);
@@ -248,7 +259,7 @@ public void actionPerformed(ActionEvent ae)
 
             questionButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/question.png")));
             panel4.add(questionButton);
-            questionButton.setBounds(300,60,300,300);
+            questionButton.setBounds(300,110,300,300);
             questionButton.setEnabled (true);
             questionButton.setBorderPainted(false);
             questionButton.addActionListener(this);

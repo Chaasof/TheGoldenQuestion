@@ -1,0 +1,25 @@
+Votre rapport va être composé des chapitres suivants.
+
+I - Introduction
+
+II - Etat de l'art.
+décrit les solutions qui existent sur le marché qui sont équivalents à votre solution.
+Etude des limites de ces solutions
+l'apport de votre solution.
+
+II - Analyse des besoins et spécification
+les fonctionnalités de votre système
+diagrammes, use case
+diagrammes de séquences système (décrire les fonctionnalités les plus importantes).
+
+III - Conception
+diagramme de classe
+diagrammes de séquences objet(décrire les fonctionnalités les plus importantes).
+
+IV - Réalisation
+Outils utilisées
+workshops intégrés.
+qques captures intéressantes.
+Diagramme de GANTT
+
+V - Conclusion
