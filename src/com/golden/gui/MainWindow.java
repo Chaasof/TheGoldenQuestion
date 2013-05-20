@@ -15,7 +15,7 @@ public class MainWindow extends JFrame implements ActionListener{
 
         String but;
         private JMenuBar barre_menu;
-        private JButton Jouer, Inscription,Quitter,jouerBouton,Av1,Av2,Av3;
+        private JButton Jouer, Inscription,Quitter,jouerBouton,questionButton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
         private JTextField loginText;
         private JPasswordField passwordField ;
         JFrame frame = new JFrame("application");
@@ -75,7 +75,7 @@ public class MainWindow extends JFrame implements ActionListener{
                  loginText.addActionListener(this);
                  
                  JLabel mdp = new JLabel();
-                 mdp.setText("mot de passe");
+                 mdp.setText("Mot de passe");
                  mdp.setFont(new Font("Serif", Font.BOLD, 12));
                  mdp.setForeground(Color.white);
                  mdp.setBounds(40,70,140,25);
@@ -95,19 +95,28 @@ public class MainWindow extends JFrame implements ActionListener{
                  Jouer.addActionListener(this);
                  
                  
-                 JLabel inscription = new JLabel();
-                 inscription.setText("Pas encore inscrit?");
-                 inscription.setFont(new Font("Serif", Font.BOLD, 12));
-                 inscription.setForeground(Color.YELLOW);
-                 inscription.setBounds(150,110,300,25);
-                 panel2.add(inscription);
+//                 JLabel inscription = new JLabel();
+//                 inscription.setText("Pas encore inscrit?");
+//                 inscription.setFont(new Font("Serif", Font.BOLD, 12));
+//                 inscription.setForeground(Color.YELLOW);
+//                 inscription.setBounds(150,110,300,25);
+//                 panel2.add(inscription);
                  
-                 Inscription = new JButton("Inscription");
-                 Inscription.setBounds(150,140,130,25);
+                 Inscription = new JButton("Pas encore inscrit?");
+                 Inscription.setFont(new Font("Serif", Font.BOLD, 11));
+                 Inscription.setForeground(Color.YELLOW);
+                 Inscription.setBounds(162,95,170,25);
                  Inscription.setEnabled (true);
+                 Inscription.setContentAreaFilled(false);
+                 Inscription.setBorderPainted(false);
                  Inscription.addActionListener(this);
                  panel2.add(Inscription);
                  
+                 Quitter = new JButton("Quitter");
+                 Quitter.setBounds(150,145,130,25);
+                 Quitter.setEnabled (true);
+                 Quitter.addActionListener(this);
+                 panel2.add(Quitter);
                  
                  this.add(panel2); 
                
@@ -199,12 +208,52 @@ public void actionPerformed(ActionEvent ae)
     if(ae.getSource()== jouerBouton){
     	this.remove(panel3);
 		this.repaint();
-		
+	
 		JPanel panel4 = new JPanel(); 
         panel4.setLayout(null);
-        panel4.setBounds(10,100,610,200);
-        panel4.setBackground(Color.DARK_GRAY);
-		
+        panel4.setBounds(10,100,610,400);
+        panel4.setBackground(new Color(1,147,221));
+        
+            propositionButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
+            panel4.add(propositionButton);
+            propositionButton.setBounds(30,80,250,58);
+            propositionButton.setEnabled (true);
+            propositionButton.setBorderPainted(false);
+            propositionButton.addActionListener(this);
+            propositionButton.setBackground(new Color(1,147,221));
+            
+            propositionButton1 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
+            panel4.add(propositionButton1);
+            propositionButton1.setBounds(30,145,250,58);
+            propositionButton1.setEnabled (true);
+            propositionButton1.setBorderPainted(false);
+            propositionButton1.addActionListener(this);
+            propositionButton1.setBackground(new Color(1,147,221));
+            
+            propositionButton2 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
+            panel4.add(propositionButton2);
+            propositionButton2.setBounds(30,210,250,58);
+            propositionButton2.setEnabled (true);
+            propositionButton2.setBorderPainted(false);
+            propositionButton2.addActionListener(this);
+            propositionButton2.setBackground(new Color(1,147,221));
+            
+            propositionButton3 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
+            panel4.add(propositionButton3);
+            propositionButton3.setBounds(30,275,250,58);
+            propositionButton3.setEnabled (true);
+            propositionButton3.setBorderPainted(false);
+            propositionButton3.addActionListener(this);
+            propositionButton3.setBackground(new Color(1,147,221));
+
+            questionButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/question.png")));
+            panel4.add(questionButton);
+            questionButton.setBounds(300,60,300,300);
+            questionButton.setEnabled (true);
+            questionButton.setBorderPainted(false);
+            questionButton.addActionListener(this);
+            questionButton.setBackground(new Color(1,147,221));
+            
         String textQuestion="";
         String repQuestion [] = {"","","",""};
         
