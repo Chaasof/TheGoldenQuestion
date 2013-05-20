@@ -1,16 +1,25 @@
 package com.golden.entities;
 
-public class User {
-	public static final int UNASSIGNED = -1;
-	
+public class Player {
+
 	private int id;
 	private String pseudo;
+	private String password;
+	public String getPassword() {
+    	return password;
+    }
+
+	public void setPassword(String password) {
+    	this.password = password;
+    }
+
 	private int bestScore;
 
-	public User(int id, String pseudo, int bestScore) {
+	public Player(int id, String pseudo, String password, int bestScore) {
 		super();
 		this.id = id;
 		this.pseudo = pseudo;
+		this.password = password;
 		this.bestScore = bestScore;
 	}
 
@@ -40,7 +49,7 @@ public class User {
 
 	@Override
 	public boolean equals(Object obj) {
-		User user = (User) obj;
-		return (user.getId() == this.id);
+		Player player = (Player) obj;
+		return (player.getId() == this.id);
 	}
 }
