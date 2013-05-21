@@ -9,10 +9,8 @@ import com.golden.entities.Question;
 
 public class QuestionGenerator {
 	private List<Question> allQuestions;
-	private List<Integer> usedIndexes;
 	public QuestionGenerator(QuestionDAO dao){
 		allQuestions = dao.findAll();
-		usedIndexes = new ArrayList<Integer>();
 	}
 	
 	public Question getQuestion() {
