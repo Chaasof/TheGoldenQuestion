@@ -55,11 +55,12 @@ public class PlayerDAO {
 			statement.setInt(3, 0);
 			statement.execute();
 			statement.close();
-			statement = base.prepareStatement("SELECT id FROM player WHERE pseudo = ?");
+			statement = base
+			        .prepareStatement("SELECT id FROM player WHERE pseudo = ?");
 			statement.setString(1, pseudo);
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
-			
+
 			return new Player(resultSet.getInt(1), pseudo, password, 0);
 		}
 		catch (SQLException e) {
@@ -69,6 +70,22 @@ public class PlayerDAO {
 			else {
 				throw new RuntimeException(e);
 			}
+		}
+	}
+
+	public boolean update(Player player) {
+		try {
+			PreparedStatement statement = base
+			        .prepareStatement("UPDATE player SET pseudo = ?, password = ?, meilleur_score = ? WHERE id = ?");
+			statement.setString(1, player.getPseudo());
+			statement.setString(2, player.getPassword());
+			statement.setInt(3, player.getBestScore());
+			statement.setInt(4, player.getId());
+			int rowCount = statement.executeUpdate();
+			return (rowCount == 1);
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }
