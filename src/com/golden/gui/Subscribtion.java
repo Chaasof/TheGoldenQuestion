@@ -148,7 +148,7 @@ public void actionPerformed(ActionEvent ae)
     		this.remove(panel2);
     		this.repaint();
     		
-    		panel3 = new JPanel(); 
+            panel3 = new JPanel(); 
             panel3.setLayout(null);
             panel3.setBounds(50,20,700,700);
             panel3.setBackground(new Color(1,147,221)); 
