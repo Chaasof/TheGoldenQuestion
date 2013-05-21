@@ -5,7 +5,7 @@ import com.golden.gui.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		AuthenticatorGui window = new AuthenticatorGui();
+		MainWindow window = new MainWindow();
 		window.setVisible(true);
 	}
 }
