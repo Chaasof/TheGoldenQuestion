@@ -15,7 +15,8 @@ public class MainWindow extends JFrame implements ActionListener{
 
         String but;
         private JMenuBar barre_menu;
-        private JButton Jouer, Inscription,Quitter,scoreButton,jouerBouton,questionButton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
+        private JButton Jouer, Inscription,Quitter,jouerBouton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
+        private JLabel scoreLabel, scoreImage,questionLabel;
         private JTextField loginText;
         private JPasswordField passwordField ;
         JFrame frame = new JFrame("application");
@@ -222,13 +223,16 @@ public void actionPerformed(ActionEvent ae)
             Av2.addActionListener(this);
             Av2.setBackground(new Color(1,147,221));
             
-            scoreButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/score.png")));
-            panel4.add(scoreButton);
-            scoreButton.setBounds(318,30,60,60);
-            scoreButton.setEnabled (true);
-            scoreButton.setBorderPainted(false);
-            scoreButton.addActionListener(this);
-            scoreButton.setBackground(new Color(1,147,221));
+            scoreLabel = new JLabel();
+            scoreLabel.setIcon(new ImageIcon(getClass().getResource("/com/golden/img/score.png")));
+            scoreLabel.setText("0");
+            panel4.add(scoreLabel);
+            scoreImage.setBounds(318,30,60,60);
+            scoreImage.setEnabled (true);
+//            scoreLabel.setBorderPainted(false);
+//            scoreLabel.addActionListener(this);
+            scoreLabel.setBackground(new Color(1,147,221));
+            
           
             
             JLabel label4 = new JLabel(); 
@@ -270,13 +274,15 @@ public void actionPerformed(ActionEvent ae)
             propositionButton3.addActionListener(this);
             propositionButton3.setBackground(new Color(1,147,221));
 
-            questionButton = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/question.png")));
-            panel4.add(questionButton);
-            questionButton.setBounds(300,170,300,300);
-            questionButton.setEnabled (true);
-            questionButton.setBorderPainted(false);
-            questionButton.addActionListener(this);
-            questionButton.setBackground(new Color(1,147,221));
+            questionLabel = new JLabel("question", new ImageIcon(getClass().getResource("/com/golden/img/question.png")),SwingConstants.CENTER);
+            panel4.add(questionLabel);
+            questionLabel.setBounds(300,170,300,300);
+            questionLabel.setEnabled (true);
+//            questionLabel.setBorderPainted(false);
+//            questionButton.addActionListener(this);
+            questionLabel.setBackground(new Color(1,147,221));
+            questionLabel.setVerticalTextPosition(SwingConstants.CENTER);
+            questionLabel.setHorizontalTextPosition(SwingConstants.CENTER);
             
         String textQuestion="";
         String repQuestion [] = {"","","",""};
