@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.golden.entities.Player;
+import com.golden.entities.Question;
 import com.golden.technique.DBConnection;
 
 public class PlayerDAO {
@@ -87,5 +88,26 @@ public class PlayerDAO {
 		catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	public boolean verifyUser(String login, String password){
+		boolean userExist=false;
+		try {
+			PreparedStatement statement = base.prepareStatement("SELECT * FROM player " +
+			        		"WHERE pseudo=? AND password=?");
+			statement.setString(1, login);
+			statement.setString(2, password);
+			statement.executeQuery();
+			ResultSet resultSet = statement.executeQuery();
+			resultSet.beforeFirst();
+			if(resultSet.next()){
+				userExist=true;
+			}
+			else{
+				userExist=false;
+			}
+		}catch(SQLException e){
+			throw new RuntimeException();
+		}
+		return userExist;
 	}
 }

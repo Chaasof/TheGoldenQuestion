@@ -11,7 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class MainWindow extends JFrame implements ActionListener{
+public class AuthenticatorGui extends JFrame implements ActionListener{
 
         String but;
         private JMenuBar barre_menu;
@@ -25,7 +25,7 @@ public class MainWindow extends JFrame implements ActionListener{
         Container c;
         JPanel panel, panel2, panel3, panelInscrit;
 
-	public MainWindow()
+	public AuthenticatorGui()
 
                  {
 
