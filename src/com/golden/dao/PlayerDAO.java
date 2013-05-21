@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.golden.entities.Player;
+import com.golden.entities.Question;
 import com.golden.technique.DBConnection;
 
 public class PlayerDAO {
@@ -55,11 +56,12 @@ public class PlayerDAO {
 			statement.setInt(3, 0);
 			statement.execute();
 			statement.close();
-			statement = base.prepareStatement("SELECT id FROM player WHERE pseudo = ?");
+			statement = base
+			        .prepareStatement("SELECT id FROM player WHERE pseudo = ?");
 			statement.setString(1, pseudo);
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
-			
+
 			return new Player(resultSet.getInt(1), pseudo, password, 0);
 		}
 		catch (SQLException e) {
@@ -70,5 +72,42 @@ public class PlayerDAO {
 				throw new RuntimeException(e);
 			}
 		}
+	}
+
+	public boolean update(Player player) {
+		try {
+			PreparedStatement statement = base
+			        .prepareStatement("UPDATE player SET pseudo = ?, password = ?, meilleur_score = ? WHERE id = ?");
+			statement.setString(1, player.getPseudo());
+			statement.setString(2, player.getPassword());
+			statement.setInt(3, player.getBestScore());
+			statement.setInt(4, player.getId());
+			int rowCount = statement.executeUpdate();
+			return (rowCount == 1);
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	public boolean verifyUser(String login, String password){
+		boolean userExist=false;
+		try {
+			PreparedStatement statement = base.prepareStatement("SELECT * FROM player " +
+			        		"WHERE pseudo=? AND password=?");
+			statement.setString(1, login);
+			statement.setString(2, password);
+			statement.executeQuery();
+			ResultSet resultSet = statement.executeQuery();
+			resultSet.beforeFirst();
+			if(resultSet.next()){
+				userExist=true;
+			}
+			else{
+				userExist=false;
+			}
+		}catch(SQLException e){
+			throw new RuntimeException();
+		}
+		return userExist;
 	}
 }

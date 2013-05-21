@@ -47,7 +47,18 @@ public class PlayerDAOTest {
 		assertEquals(player.getPassword(), "aaa");
 		assertEquals(player.getBestScore(), 0);	
 	}
-
+    @Test 
+    public void update_ShouldUpdatePlayerInDatabase() {
+    	PlayerDAO dao = PlayerDAO.getInstance();
+    	Player player = new Player(1,"hammiya", "aaa", 10);
+    	assertTrue(dao.update(player));
+    }
+    @Test 
+    public void update_ShouldReturnFalseIfPlayerNotInDatabase() {
+    	PlayerDAO dao = PlayerDAO.getInstance();
+    	Player nonExistingPlayer = new Player(2149,"ham", "aa", 30);
+    	assertFalse(dao.update(nonExistingPlayer));
+    }
 	@Test(expected = DuplicatedPlayerException.class)
 	public void insert_shouldThrowDuplicatedPlayerException() {
 		PlayerDAO dao = PlayerDAO.getInstance();
