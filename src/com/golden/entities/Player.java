@@ -1,19 +1,20 @@
 package com.golden.entities;
 
-public class Player {
+
+public class Player implements Comparable<Player> {
 
 	private int id;
 	private String pseudo;
 	private String password;
+	private int bestScore;
+
 	public String getPassword() {
-    	return password;
-    }
+		return password;
+	}
 
 	public void setPassword(String password) {
-    	this.password = password;
-    }
-
-	private int bestScore;
+		this.password = password;
+	}
 
 	public Player(int id, String pseudo, String password, int bestScore) {
 		super();
@@ -52,4 +53,19 @@ public class Player {
 		Player player = (Player) obj;
 		return (player.getId() == this.id);
 	}
+
+	@Override
+	public int compareTo(Player player) {
+		if (this.getBestScore() > player.getBestScore()) {
+			return 1;
+		}
+		else if (this.getBestScore() < player.getBestScore()) {
+			return -1;
+		}
+		else {
+			return 0;
+		}
+
+	}
+
 }
