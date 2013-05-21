@@ -15,7 +15,7 @@ public class MainWindow extends JFrame implements ActionListener{
 
         String but;
         private JMenuBar barre_menu;
-        private JButton Jouer, Inscription,Validation,Quitter,jouerBouton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
+        private JButton Retour, Jouer, Skip, Inscription,Validation,Quitter,jouerBouton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
         private JLabel scoreLabel,questionLabel;
         private JTextField loginText,loginInscrit;
         private JPasswordField passwordField, passwordInscrit, passwordValidation ;
@@ -29,7 +29,7 @@ public class MainWindow extends JFrame implements ActionListener{
 
                  {
 
-                 this.setTitle("Question Pour Un Champion");
+                 this.setTitle("The Golden Question");
 		         this.setBounds(350,0,630,650);
 
                  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -207,14 +207,15 @@ public void actionPerformed(ActionEvent ae)
             
             panelInscrit = new JPanel(); 
             panelInscrit.setLayout(null);
-            panelInscrit.setBounds(100,380,430,200);
+            panelInscrit.setBounds(75,380,480,200);
+
             panelInscrit.setBackground(Color.DARK_GRAY); 
                  
             JLabel label2 = new JLabel(); 
             label2.setText("Inscivez vous");
             label2.setFont(new Font("Serif", Font.BOLD, 14));
             label2.setForeground(Color.white);
-            label2.setBounds(135,0,300,25);
+            label2.setBounds(165,0,300,25);
             panelInscrit.add(label2);
                 
                  
@@ -222,12 +223,12 @@ public void actionPerformed(ActionEvent ae)
             login.setText("Username");
             login.setFont(new Font("Serif", Font.BOLD, 12));
             login.setForeground(Color.white);
-            login.setBounds(40,40,80,25);
+            login.setBounds(30,40,80,25);
             panelInscrit.add(login);
                  
                  
             loginInscrit = new JTextField();
-            loginInscrit.setBounds(160,40,150,25);
+            loginInscrit.setBounds(160,40,170,25);
             panelInscrit.add(loginInscrit);
             loginInscrit.setEnabled (true);
             loginInscrit.addActionListener(this);
@@ -236,38 +237,44 @@ public void actionPerformed(ActionEvent ae)
             mdp.setText("Mot de passe");
             mdp.setFont(new Font("Serif", Font.BOLD, 12));
             mdp.setForeground(Color.white);
-            mdp.setBounds(40,70,140,25);
+            mdp.setBounds(30,70,140,25);
             panelInscrit.add(mdp);
                   
                  
             passwordInscrit = new JPasswordField(10);
-            passwordInscrit.setBounds(160,70,150,25);
+            passwordInscrit.setBounds(160,70,170,25);
             panelInscrit.add(passwordInscrit);
             passwordInscrit.setEnabled (true);
             passwordInscrit.addActionListener(this);
             
             JLabel mdpV = new JLabel();
-            mdp.setText("Validation mot de passe");
-            mdp.setFont(new Font("Serif", Font.BOLD, 12));
-            mdp.setForeground(Color.white);
-            mdp.setBounds(40,100,140,25);
-            panelInscrit.add(mdp);
+            mdpV.setText("Validation");
+            mdpV.setFont(new Font("Serif", Font.BOLD, 12));
+            mdpV.setForeground(Color.white);
+            mdpV.setBounds(30,100,140,25);
+            panelInscrit.add(mdpV);
                   
                  
             passwordValidation = new JPasswordField(10);
-            passwordValidation.setBounds(160,100,150,25);
+            passwordValidation.setBounds(160,100,170,25);
             panelInscrit.add(passwordValidation);
             passwordValidation.setEnabled (true);
             passwordValidation.addActionListener(this);
                  
             Validation = new JButton("S'inscrire");
-            Validation.setBounds(320,57,90,25);
+            Validation.setBounds(350,71,100,25);
             panelInscrit.add(Validation);
             Validation.setEnabled (true);
             Validation.addActionListener(this);
-                 
+            
+            Retour = new JButton("Retour");
+            Retour.setBounds(95,145,130,25);
+            Retour.setEnabled (true);
+            Retour.addActionListener(this);
+            panelInscrit.add(Retour);
+            
             Quitter = new JButton("Quitter");
-            Quitter.setBounds(150,145,130,25);
+            Quitter.setBounds(260,145,130,25);
             Quitter.setEnabled (true);
             Quitter.addActionListener(this);
             panelInscrit.add(Quitter);
@@ -277,8 +284,8 @@ public void actionPerformed(ActionEvent ae)
     }
 
     if(ae.getSource()== jouerBouton){
-    	this.remove(panel3);
-		this.repaint();
+            this.remove(panel3);
+            this.repaint();
             
             JPanel panel4 = new JPanel(); 
             panel4.setLayout(null);
@@ -324,7 +331,7 @@ public void actionPerformed(ActionEvent ae)
             propositionButton1 = new JButton("", new ImageIcon(getClass().getResource("/com/golden/img/proposition.png")));
             propositionButton1.setFont(new Font("Century SchoolBook L", Font.ITALIC, 14));
             panel4.add(propositionButton1);
-            propositionButton1.setBounds(30,265,250,58);
+            propositionButton1.setBounds(30,255,250,58);
             propositionButton1.setEnabled (true);
             propositionButton1.setBorderPainted(false);
             propositionButton1.addActionListener(this);
@@ -358,12 +365,18 @@ public void actionPerformed(ActionEvent ae)
             panel4.add(questionLabel);
             questionLabel.setBounds(300,170,300,300);
             questionLabel.setEnabled (true);
-//            questionLabel.setBorderPainted(false);
-//            questionButton.addActionListener(this);
+//          questionLabel.setBorderPainted(false);
+//          questionButton.addActionListener(this);
             questionLabel.setFont(new Font("Century SchoolBook L", Font.ITALIC, 22));
             questionLabel.setBackground(new Color(1,147,221));
             questionLabel.setVerticalTextPosition(SwingConstants.CENTER);
             questionLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+            
+            Skip = new JButton("Passe");
+            Skip.setBounds(405,480,100,25);
+            panel4.add(Skip);
+            Skip.setEnabled (true);
+            Skip.addActionListener(this);
             
         String textQuestion="";
         String repQuestion [] = {"","","",""};
@@ -429,6 +442,11 @@ public void actionPerformed(ActionEvent ae)
     if(ae.getSource()==Quitter){
        System.exit(0);
     }
+//    
+//        if(ae.getSource()==Retour){
+//            getContentPane().remove(panelInscrit);
+//            getContentPane().add(panel2);
+//    }
 
 
             
