@@ -106,7 +106,7 @@ public class PlayerDAO {
 				userExist=false;
 			}
 		}catch(SQLException e){
-			throw new RuntimeException();
+			throw new RuntimeException(e);
 		}
 		return userExist;
 	}
