@@ -168,7 +168,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			propositionButton = new JButton("", new ImageIcon(getClass()
 			        .getResource("/com/golden/img/proposition.png")));
 			propositionButton.setFont(new Font("Century SchoolBook L",
-			        Font.ITALIC, 14));
+			        Font.ITALIC, 18));
 			panel4.add(propositionButton);
 			propositionButton.setBounds(30, 190, 250, 58);
 			propositionButton.setEnabled(true);
@@ -181,7 +181,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			propositionButton1 = new JButton("", new ImageIcon(getClass()
 			        .getResource("/com/golden/img/proposition.png")));
 			propositionButton1.setFont(new Font("Century SchoolBook L",
-			        Font.ITALIC, 14));
+			        Font.ITALIC, 18));
 			panel4.add(propositionButton1);
 			propositionButton1.setBounds(30, 255, 250, 58);
 			propositionButton1.setEnabled(true);
@@ -194,7 +194,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			propositionButton2 = new JButton("", new ImageIcon(getClass()
 			        .getResource("/com/golden/img/proposition.png")));
 			propositionButton2.setFont(new Font("Century SchoolBook L",
-			        Font.ITALIC, 14));
+			        Font.ITALIC, 18));
 			panel4.add(propositionButton2);
 			propositionButton2.setBounds(30, 320, 250, 58);
 			propositionButton2.setEnabled(true);
@@ -207,7 +207,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			propositionButton3 = new JButton("", new ImageIcon(getClass()
 			        .getResource("/com/golden/img/proposition.png")));
 			propositionButton3.setFont(new Font("Century SchoolBook L",
-			        Font.ITALIC, 14));
+			        Font.ITALIC, 18));
 			panel4.add(propositionButton3);
 			propositionButton3.setBounds(30, 385, 250, 58);
 			propositionButton3.setEnabled(true);
@@ -223,7 +223,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			*/
 			questionLabel = new JTextArea(); 
 			panel4.add(questionLabel);
-			questionLabel.setBounds(300, 170, 300, 300);
+			questionLabel.setBounds(300, 260, 300, 300);
 			questionLabel.setEnabled(true);
 			questionLabel.setFont(new Font("Century SchoolBook L", Font.ITALIC,
 			        22));
