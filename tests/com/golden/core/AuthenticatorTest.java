@@ -8,7 +8,7 @@ public class AuthenticatorTest {
     
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

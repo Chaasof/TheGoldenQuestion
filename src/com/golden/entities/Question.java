@@ -72,7 +72,7 @@ public class Question {
 	    Question q = (Question) obj;
 	    return (q.getId() == id);
     }
-        public boolean isCorrect(String answer){
-            return trueAnsewer.equals(answer);
-        }
+	public boolean isCorrect(String answer){
+		return trueAnsewer.equals(answer);
+	}
 }
