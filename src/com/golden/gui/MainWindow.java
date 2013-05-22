@@ -221,7 +221,7 @@ public void actionPerformed(ActionEvent ae)
             propositionButton3.setVerticalTextPosition(SwingConstants.CENTER);
             propositionButton3.setHorizontalTextPosition(SwingConstants.CENTER);
 
-            questionLabel = new JLabel("question", new ImageIcon(getClass().getResource("/com/golden/img/question.png")),SwingConstants.CENTER);
+            questionLabel = new JLabel("", new ImageIcon(getClass().getResource("/com/golden/img/question.png")),SwingConstants.CENTER);
             panel4.add(questionLabel);
             questionLabel.setBounds(300,170,300,300);
             questionLabel.setEnabled (true);
@@ -297,7 +297,7 @@ public void actionPerformed(ActionEvent ae)
         refreshQuestion();
     }
 
-
+  
             
 
 }
