@@ -1,8 +1,10 @@
 package com.golden.gui;
 import com.golden.core.Authenticator;
 import com.golden.core.PlayerSubscriber;
+import com.golden.core.QuestionGenerator;
 import com.golden.dao.DuplicatedPlayerException;
 import com.golden.dao.PlayerDAO;
+import com.golden.dao.QuestionDAO;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -10,13 +12,15 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-
+import com.golden.entities.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class MainWindow extends JFrame implements ActionListener{
-        
+    int score = 0;    
+    Question currentQuestion;
+    QuestionGenerator generator;
         String but;
         private JMenuBar barre_menu;
         private JButton Retour, Jouer, Skip, Inscription,Validation,Quitter,jouerBouton,propositionButton,propositionButton1,propositionButton2,propositionButton3,Av1,Av2,Av3;
@@ -231,15 +235,26 @@ public void actionPerformed(ActionEvent ae)
             panel4.add(Skip);
             Skip.setEnabled (true);
             Skip.addActionListener(this);
+            generator = new QuestionGenerator(QuestionDAO.getInstance());
+               refreshQuestion();
+               
             
-        String textQuestion="";
-        String repQuestion [] = {"","","",""};
-           
         
       
         //=======================================================
         this.add(panel4);
 	}
+    if ((ae.getSource() == propositionButton) || (ae.getSource() == propositionButton1) || (ae.getSource() == propositionButton2)
+            || (ae.getSource() == propositionButton3)) {
+        if ( currentQuestion.isCorrect(((JButton)ae.getSource()).getText())){
+                score +=5;
+                scoreLabel.setText(Integer.toString(score));
+                refreshQuestion();
+        }
+        else {
+                refreshQuestion();
+        }
+    }
     if (ae.getSource() == Validation){
         PlayerSubscriber subscriber = new PlayerSubscriber(PlayerDAO.getInstance());
         String loginSub = loginInscrit.getText();
@@ -277,6 +292,9 @@ public void actionPerformed(ActionEvent ae)
     }
     if (ae.getSource() == Av3){
         selected = Av3;
+    }
+    if (ae.getSource() == Skip){
+        refreshQuestion();
     }
 
 
@@ -426,6 +444,15 @@ public void actionPerformed(ActionEvent ae)
         panel2.add(Quitter);
         
         this.add(panel2);
+    }
+
+    private void refreshQuestion() {
+        currentQuestion =  generator.getQuestion();
+        questionLabel.setText(currentQuestion.getQuestion());
+        propositionButton.setText(currentQuestion.getTrueAnsewer());
+        propositionButton1.setText(currentQuestion.getFalseAnsewer1());
+        propositionButton2.setText(currentQuestion.getFalseAnsewer2());
+        propositionButton3.setText(currentQuestion.getFalseAnsewer3());
     }
 
 }
